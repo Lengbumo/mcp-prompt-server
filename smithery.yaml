@@ -1,5 +1,8 @@
-version: 1
-type: stdio
-start:
-  command: ["node", "src/index.js"]
-configSchema: {}
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    description: No configuration required
+  commandFunction: |-
+    (config) => ({ command: 'node', args: ['src/index.js'] })
+  exampleConfig: {}

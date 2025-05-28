@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:lts-alpine
 
 WORKDIR /app
 
@@ -6,13 +6,10 @@ WORKDIR /app
 COPY package*.json ./
 
 # 安装依赖
-RUN npm install
+RUN npm install --production
 
 # 复制应用代码
-COPY . .
-
-# 设置权限
-RUN chmod +x src/index.js
+COPY src ./src
 
 # 容器启动命令将由smithery.yaml提供
 CMD ["node", "src/index.js"] 
